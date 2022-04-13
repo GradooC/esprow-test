@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import personsReducer from 'Features/persons/persons-slice';
+import { personsReducer } from 'Features/persons';
 
 export const store = configureStore({
 	reducer: {

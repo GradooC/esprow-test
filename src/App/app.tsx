@@ -1,7 +1,10 @@
+import { Persons } from 'Features/persons';
 import React from 'react';
-import { useAppSelector } from './hooks';
 
 export function App() {
-	const persons = useAppSelector(state => state.persons);
-	return <div>{persons.ids}</div>;
+	return (
+		<div>
+			<Persons />
+		</div>
+	);
 }
