@@ -1,2 +1,5 @@
-[*.{tsx,ts}]
+[*]
+insert_final_newline = true
+
+[*.{tsx,jsx,ts,js}]
 indent_style = tab
