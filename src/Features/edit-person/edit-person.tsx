@@ -3,20 +3,20 @@ import { Input } from 'Common/input';
 import { Modal } from 'Common/modal';
 import { Person } from '@Types/person';
 import { useAppDispatch, useAppSelector } from 'App/hooks';
-import { cancelEditing, selectEditedPerson } from './edit-person-slice';
+import { cancelEditing, selectEditedPersonId } from './edit-person-slice';
 import isEmpty from 'lodash.isempty';
 
 type EditPersonProps = Partial<Person>;
 
 export function EditPerson({ name }: EditPersonProps) {
 	const dispatch = useAppDispatch();
-	const editedPerson = useAppSelector(selectEditedPerson);
+	const editedPersonId = useAppSelector(selectEditedPersonId);
+
+	if (isEmpty(editedPersonId)) return null;
 
 	const handleCancelEditing = () => {
 		dispatch(cancelEditing());
 	};
-
-	if (isEmpty(editedPerson)) return null;
 
 	return (
 		<Modal title="EditPerson" onCancel={handleCancelEditing}>

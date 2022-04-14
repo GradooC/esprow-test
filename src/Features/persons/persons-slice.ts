@@ -4,10 +4,10 @@ import mockData from 'Mocks/MOCK_DATA.json';
 
 type Entities = Record<string, typeof mockData[number]>;
 
-const byId = mockData.reduce(
-	(acc, person) => ({ ...acc, [person.id]: person }),
-	{} as Entities
-);
+const byId = mockData.reduce((acc, person) => {
+	acc[person.id] = person;
+	return acc;
+}, {} as Entities);
 
 const initialState = {
 	entities: byId,
