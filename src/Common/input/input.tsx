@@ -1,27 +1,24 @@
 import React from 'react';
+import { InputType } from './types';
 
-type InputProps = {
-	type?: 'text';
+type InputProps = InputType & {
 	label: string;
 };
 
-export function Input({ type, label }: InputProps) {
+export function Input({ type, label, defaultValue }: InputProps) {
 	return (
 		<div>
-			<label
-				htmlFor="grid-first-name"
-			>
-				<p className="uppercase text-gray-700 text-xs font-bold mb-2">{label}</p>
+			<label htmlFor={`input-${label}`}>
+				<p className="inline-block uppercase text-gray-700 text-xs font-bold mb-1">
+					{label}
+				</p>
 				<input
 					className="w-full bg-gray-200 text-gray-700 border border-emerald-500 rounded py-2 px-4 focus:outline-none focus:bg-white"
-					id="grid-first-name"
+					id={`input-${label}`}
 					type={type}
+					defaultValue={defaultValue}
 				/>
 			</label>
 		</div>
 	);
 }
-
-Input.defaultProps = {
-	type: 'text',
-};
