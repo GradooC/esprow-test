@@ -20,10 +20,10 @@ const personsSlice = createSlice({
 	reducers: {},
 });
 
-const selectPersonsEntities = (state: AppState) => state.persons.entities;
-const selectPersonsIds = (state: AppState) => state.persons.ids;
+export const selectPersonEntities = (state: AppState) => state.persons.entities;
+const selectPersonIds = (state: AppState) => state.persons.ids;
 export const selectAllPersons = createSelector(
-	[selectPersonsEntities, selectPersonsIds],
+	[selectPersonEntities, selectPersonIds],
 	(entities, ids) => ids.map(id => entities[id])
 );
 
