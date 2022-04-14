@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.4",
     "lodash.isempty": "^4.4.0",
+    "lodash.noop": "^3.0.1",
     "postcss": "^8.4.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@types/lodash.isempty": "^4.4.6",
+    "@types/lodash.noop": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "eslint": "^8.13.0",
