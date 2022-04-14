@@ -24,6 +24,11 @@ export function Person({
 		<li className="rounded-md bg-white p-5">
 			<div className="flex items-center justify-between">
 				<h4 className="text-2xl">{name}</h4>
+				<div
+					className={`${
+						isActive ? 'bg-green-400' : 'bg-red-400'
+					} mr-auto ml-3 w-4 h-4 rounded-full`}
+				/>
 				<IconButton onClick={handlePersonClick}>
 					<EditIcon width={30} />
 				</IconButton>
@@ -44,13 +49,6 @@ export function Person({
 				<b>About:&nbsp;</b>
 				<p>{about}</p>
 			</div>
-			<p
-				className={`${
-					isActive ? 'text-green-600' : 'text-red-600'
-				} capitalize text-center`}
-			>
-				{isActive ? 'active' : 'inactive'}
-			</p>
 		</li>
 	);
 }
