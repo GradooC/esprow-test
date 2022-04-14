@@ -1,14 +1,12 @@
-import { Modal } from 'Common/modal';
-import { Persons } from 'Features/persons';
 import React from 'react';
+import { EditPerson } from 'Features/edit-person';
+import { Persons } from 'Features/persons';
 
 export function App() {
 	return (
-		<div>
+		<>
 			<Persons />
-			<Modal title="modal">
-				<div>AAA</div>
-			</Modal>
-		</div>
+			<EditPerson />
+		</>
 	);
 }
