@@ -1,8 +1,9 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { Person } from '@Types/person';
 import { AppState } from 'App/store';
 import mockData from 'Mocks/MOCK_DATA.json';
 
-type Entities = Record<string, typeof mockData[number]>;
+type Entities = Record<string, Person>;
 
 const byId = mockData.reduce((acc, person) => {
 	acc[person.id] = person;

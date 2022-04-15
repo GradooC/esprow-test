@@ -14,6 +14,7 @@ export function Person({
 	email,
 	address,
 	about,
+	registered,
 	onEdit,
 }: PersonProps) {
 	const handlePersonClick = () => {
@@ -27,26 +28,29 @@ export function Person({
 				<div
 					className={`${
 						isActive ? 'bg-green-400' : 'bg-red-400'
-					} mr-auto ml-3 w-4 h-4 rounded-full`}
+					} ml-3 w-4 h-4 rounded-full`}
 				/>
+				<p className="text-sm text-gray-400 mr-auto ml-3">
+					{new Date(registered).toDateString()}
+				</p>
 				<IconButton onClick={handlePersonClick}>
 					<EditIcon width={30} />
 				</IconButton>
 			</div>
 			<p>
-				<b>Age:&nbsp;</b>
+				<strong>Age:&nbsp;</strong>
 				{age}
 			</p>
 			<p>
-				<b>Email:&nbsp;</b>
+				<strong>Email:&nbsp;</strong>
 				{email}
 			</p>
 			<p>
-				<b>Address:&nbsp;</b>
+				<strong>Address:&nbsp;</strong>
 				{address}
 			</p>
 			<div className="flex">
-				<b>About:&nbsp;</b>
+				<strong>About:&nbsp;</strong>
 				<p>{about}</p>
 			</div>
 		</li>
