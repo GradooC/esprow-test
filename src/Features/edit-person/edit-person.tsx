@@ -44,10 +44,13 @@ export function EditPerson() {
 		const person: Person = {
 			id: editedPersonId,
 			name: nameRef.current?.value || personEntities[editedPersonId].name,
-			registered: registeredRef.current?.value || personEntities[editedPersonId].registered,
+			registered:
+				registeredRef.current?.value ||
+				personEntities[editedPersonId].registered,
 			about: aboutRef.current?.value || personEntities[editedPersonId].about,
 			email: emailRef.current?.value || personEntities[editedPersonId].email,
-			address: addressRef.current?.value || personEntities[editedPersonId].address,
+			address:
+				addressRef.current?.value || personEntities[editedPersonId].address,
 			age: Number(ageRef.current?.value || personEntities[editedPersonId].age),
 			picture: personEntities[editedPersonId].picture,
 			isActive,
@@ -59,52 +62,57 @@ export function EditPerson() {
 	const editedPerson = personEntities[editedPersonId];
 
 	return (
-		<Modal title="Edit Personal Information" onCancel={handleCancelEditing}>
-			<form className="space-y-3" onSubmit={handleSubmit}>
-				<Input
-					ref={nameRef}
-					label="name"
-					defaultValue={editedPerson.name}
-					type="text"
-				/>
-				<Input
-					ref={registeredRef}
-					label="registered"
-					defaultValue={editedPerson.registered}
-					type="date"
-				/>
-				<Input
-					ref={ageRef}
-					label="age"
-					defaultValue={editedPerson.age}
-					type="number"
-				/>
-				<Input
-					ref={emailRef}
-					label="email"
-					defaultValue={editedPerson.email}
-					type="email"
-				/>
-				<Input
-					ref={addressRef}
-					label="address"
-					defaultValue={editedPerson.address}
-					type="text"
-				/>
-				<Textarea
-					ref={aboutRef}
-					label="about"
-					defaultValue={editedPerson.about}
-				/>
-				<RadioGroup
-					ref={radioGroup}
-					label="is active"
-					defaultValue={editedPerson.isActive ? RadioValues.YES : RadioValues.NO}
-				>
-					<Radio color="green" value={RadioValues.YES} />
-					<Radio color="red" value={RadioValues.NO} />
-				</RadioGroup>
-				<button type="submit">test</button>
+		<Modal>
+			<form onSubmit={handleSubmit}>
+				<Modal.Header>Edit Personal Information</Modal.Header>
+				<Modal.Body>
+					<Input
+						ref={nameRef}
+						label="name"
+						defaultValue={editedPerson.name}
+						type="text"
+					/>
+					<Input
+						ref={registeredRef}
+						label="registered"
+						defaultValue={editedPerson.registered}
+						type="date"
+					/>
+					<Input
+						ref={ageRef}
+						label="age"
+						defaultValue={editedPerson.age}
+						type="number"
+					/>
+					<Input
+						ref={emailRef}
+						label="email"
+						defaultValue={editedPerson.email}
+						type="email"
+					/>
+					<Input
+						ref={addressRef}
+						label="address"
+						defaultValue={editedPerson.address}
+						type="text"
+					/>
+					<Textarea
+						ref={aboutRef}
+						label="about"
+						defaultValue={editedPerson.about}
+					/>
+					<RadioGroup
+						ref={radioGroup}
+						label="is active"
+						defaultValue={
+							editedPerson.isActive ? RadioValues.YES : RadioValues.NO
+						}
+					>
+						<Radio color="green" value={RadioValues.YES} />
+						<Radio color="red" value={RadioValues.NO} />
+					</RadioGroup>
+				</Modal.Body>
+				<Modal.Footer onCancel={handleCancelEditing} />
 			</form>
 		</Modal>
 	);
