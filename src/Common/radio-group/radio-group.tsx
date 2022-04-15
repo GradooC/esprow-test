@@ -34,11 +34,11 @@ export const RadioGroup = forwardRef<RadioGroupRef, RadioGroupProps>(
 
 		return (
 			<RadioGroupContext.Provider value={value}>
-				<fieldset className="inline-block border border-emerald-500 bg-gray-200 rounded">
+				<fieldset>
 					<legend className="inline-block uppercase text-gray-700 text-xs font-bold mb-1">
 						{label}
 					</legend>
-					{children}
+					<div className="space-x-3">{children}</div>
 				</fieldset>
 			</RadioGroupContext.Provider>
 		);
