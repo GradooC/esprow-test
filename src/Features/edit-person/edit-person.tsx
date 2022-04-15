@@ -3,7 +3,6 @@ import { Input } from 'Common/input';
 import { Modal } from 'Common/modal';
 import { useAppDispatch, useAppSelector } from 'App/hooks';
 import { cancelEditing, selectEditedPersonId } from './edit-person-slice';
-import isEmpty from 'lodash.isempty';
 import {
 	savePerson,
 	selectPersonEntities,
@@ -29,8 +28,6 @@ export function EditPerson() {
 	const addressRef = useRef<HTMLInputElement>(null);
 	const aboutRef = useRef<HTMLTextAreaElement>(null);
 	const radioGroup = useRef<RadioGroupRef>(null);
-
-	if (isEmpty(editedPersonId)) return null;
 
 	const handleCancelEditing = () => {
 		dispatch(cancelEditing());
@@ -60,6 +57,8 @@ export function EditPerson() {
 	};
 
 	const editedPerson = personEntities[editedPersonId];
+
+	if (!editedPerson) return null;
 
 	return (
 		<Modal>
