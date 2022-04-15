@@ -1,2 +1,2 @@
-export { default as personsReducer } from './persons-slice';
+export { default as personsReducer, savePerson } from './persons-slice';
 export { Persons } from './persons';

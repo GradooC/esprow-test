@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Person } from '@Types/person';
 import { AppState } from 'App/store';
 import mockData from 'Mocks/MOCK_DATA.json';
@@ -18,7 +18,11 @@ const initialState = {
 const personsSlice = createSlice({
 	name: 'persons',
 	initialState,
-	reducers: {},
+	reducers: {
+		savePerson: (state, action: PayloadAction<Person>) => {
+			state.entities[action.payload.id] = action.payload;
+		},
+	},
 });
 
 export const selectPersonEntities = (state: AppState) => state.persons.entities;
@@ -27,5 +31,7 @@ export const selectAllPersons = createSelector(
 	[selectPersonEntities, selectPersonIds],
 	(entities, ids) => ids.map(id => entities[id])
 );
+
+export const { savePerson } = personsSlice.actions;
 
 export default personsSlice.reducer;
