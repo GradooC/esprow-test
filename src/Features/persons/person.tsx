@@ -22,7 +22,7 @@ export const Person = memo(
 		};
 
 		return (
-			<li className="rounded-md bg-white p-5">
+			<li className="rounded-md bg-white p-5 max-w-4xl min-w-min w-full shadow-lg">
 				<div className="flex items-center justify-between">
 					<h4 className="text-2xl">{name}</h4>
 					<div

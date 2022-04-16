@@ -9,8 +9,8 @@ type ModalProps = {
 
 export function Modal({ children }: ModalProps) {
 	return (
-		<div className="bg-slate-800/80 w-screen h-screen flex justify-center items-center fixed left-0 top-0">
-			<div className="flex flex-col bg-white py-4 px-5 w-2/5 rounded-xl">
+		<div className="bg-slate-800/80 flex justify-center items-center fixed inset-0 backdrop-blur-sm">
+			<div className="flex flex-col bg-white py-4 px-5 w-2/5 min-w-min max-w-md rounded-xl">
 				{children}
 			</div>
 		</div>

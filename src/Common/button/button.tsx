@@ -10,7 +10,7 @@ type ButtonProps = {
 export function Button({ children, type, onClick }: ButtonProps) {
 	return (
 		<button
-			className="block text-white bg-teal-500 hover:bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center uppercase basis-full"
+			className="block text-white bg-blue-500 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center uppercase basis-full"
 			type={type === 'button' ? 'button' : 'submit'}
 			onClick={onClick}
 		>

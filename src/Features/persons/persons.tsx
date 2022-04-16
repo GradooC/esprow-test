@@ -13,7 +13,7 @@ export function Persons() {
 	}, [dispatch]);
 
 	return (
-		<ul className="flex flex-col space-y-5 bg-slate-400 px-10 py-4">
+		<ul className="flex flex-col items-center space-y-5 bg-gradient-to-r from-cyan-500 to-blue-500 py-4 px-4">
 			{persons.map(person => (
 				<Person key={person.id} {...person} onEdit={handleEditPerson} />
 			))}
