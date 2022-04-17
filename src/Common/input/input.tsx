@@ -1,5 +1,6 @@
 import React, { forwardRef, useTransition } from 'react';
 import { InputType } from './types';
+import { ReactComponent as SandClockIcon } from 'Icons/sand-clock.svg';
 
 type InputProps = InputType & {
 	label?: string;
@@ -10,7 +11,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 	({
 		type, label, defaultValue, onChange,
 	}, ref) => {
-		const [, startTransition] = useTransition();
+		const [isPending, startTransition] = useTransition();
 
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 			startTransition(() => {
@@ -22,7 +23,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 		switch (type) {
 		case 'date':
-			formattedDefaultValue = new Date(defaultValue).toLocaleDateString('en-CA');
+			formattedDefaultValue = new Date(defaultValue).toLocaleDateString(
+				'en-CA'
+			);
 			break;
 		default:
 			formattedDefaultValue = defaultValue;
@@ -37,14 +40,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							{label}
 						</p>
 					)}
-					<input
-						ref={ref}
-						className="w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-2 px-4 focus:outline-none focus:bg-white"
-						id={`input-${label}`}
-						type={type}
-						defaultValue={formattedDefaultValue}
-						onChange={handleChange}
-					/>
+					<div className="relative">
+						<input
+							ref={ref}
+							className="w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-2 px-4 focus:outline-none focus:bg-white"
+							id={`input-${label}`}
+							type={type}
+							defaultValue={formattedDefaultValue}
+							onChange={handleChange}
+						/>
+						{isPending && (
+							<div className="absolute inset-y-0 right-0 flex items-center animate-make-visible pr-1">
+								<SandClockIcon width={25} fill="#64748b" />
+							</div>
+						)}
+					</div>
 				</label>
 			</div>
 		);
