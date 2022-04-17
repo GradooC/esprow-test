@@ -1,36 +1,57 @@
-import React, { forwardRef } from 'react';
-import { blank } from 'Utils';
+import React, { forwardRef, useTransition } from 'react';
 import { InputType } from './types';
 
 type InputProps = InputType & {
-	label: string;
-};
-
-const formatterMap = {
-	date: (value: string | number) => new Date(value).toLocaleDateString('en-CA'),
-	number: blank,
-	email: blank,
-	text: blank,
+	label?: string;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-	({ type, label, defaultValue }, ref) => {
-		const formattedDefaultValue = formatterMap[type](defaultValue);
+	({
+		type, label, defaultValue, onChange,
+	}, ref) => {
+		const [, startTransition] = useTransition();
+
+		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			startTransition(() => {
+				onChange?.(e);
+			});
+		};
+
+		let formattedDefaultValue;
+
+		switch (type) {
+		case 'date':
+			formattedDefaultValue = new Date(defaultValue).toLocaleDateString('en-CA');
+			break;
+		default:
+			formattedDefaultValue = defaultValue;
+			break;
+		}
+
 		return (
 			<div>
 				<label htmlFor={`input-${label}`}>
-					<p className="inline-block uppercase text-gray-700 text-xs font-bold mb-1">
-						{label}
-					</p>
+					{label && (
+						<p className="inline-block uppercase text-gray-700 text-xs font-bold mb-1">
+							{label}
+						</p>
+					)}
 					<input
 						ref={ref}
 						className="w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-2 px-4 focus:outline-none focus:bg-white"
 						id={`input-${label}`}
 						type={type}
 						defaultValue={formattedDefaultValue}
+						onChange={handleChange}
 					/>
 				</label>
 			</div>
 		);
 	}
 );
+
+Input.defaultProps = {
+	label: undefined,
+	onChange: undefined,
+};

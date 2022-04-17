@@ -1,6 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Person } from '@Types/person';
 import { AppState } from 'App/store';
+import { selectPersonFilter } from 'Features/filter-person/filter-person-slice';
 import mockData from 'Mocks/MOCK_DATA.json';
 
 type Entities = Record<string, Person>;
@@ -28,8 +29,11 @@ const personsSlice = createSlice({
 export const selectPersonEntities = (state: AppState) => state.persons.entities;
 const selectPersonIds = (state: AppState) => state.persons.ids;
 export const selectAllPersons = createSelector(
-	[selectPersonEntities, selectPersonIds],
-	(entities, ids) => ids.map(id => entities[id])
+	[selectPersonEntities, selectPersonIds, selectPersonFilter],
+	(entities, ids, filter) =>
+		ids
+			.map(id => entities[id])
+			.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()))
 );
 
 export const { savePerson } = personsSlice.actions;
