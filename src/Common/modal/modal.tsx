@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Body } from './body';
-import { Footer } from './footer';
-import { Header } from './header';
+import { ModalBody } from './modal-body';
+import { ModalFooter } from './modal-footer';
+import { ModalHeader } from './modal-header';
 
 type ModalProps = {
 	children: ReactNode;
@@ -17,6 +17,6 @@ export function Modal({ children }: ModalProps) {
 	);
 }
 
-Modal.Header = Header;
-Modal.Body = Body;
-Modal.Footer = Footer;
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;

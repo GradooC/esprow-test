@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'Common/button';
 
-type FooterProps = {
+type ModalFooterProps = {
 	onCancel: () => void;
 };
 
-export function Footer({ onCancel }: FooterProps) {
+export function ModalFooter({ onCancel }: ModalFooterProps) {
 	return (
 		<div className="flex space-x-2">
 			<Button type="submit">submit</Button>

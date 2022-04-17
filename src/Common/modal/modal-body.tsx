@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 
-type BodyProps = {
+type ModalBodyProps = {
 	children: ReactNode;
 };
 
-export function Body({ children }: BodyProps) {
+export function ModalBody({ children }: ModalBodyProps) {
 	return <div className="py-5 space-y-3">{children}</div>;
 }
