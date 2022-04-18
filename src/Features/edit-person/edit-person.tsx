@@ -40,15 +40,12 @@ export function EditPerson() {
 
 		const person: Person = {
 			id: editedPersonId,
-			name: nameRef.current?.value || personEntities[editedPersonId].name,
-			registered:
-				registeredRef.current?.value ||
-				personEntities[editedPersonId].registered,
-			about: aboutRef.current?.value || personEntities[editedPersonId].about,
-			email: emailRef.current?.value || personEntities[editedPersonId].email,
-			address:
-				addressRef.current?.value || personEntities[editedPersonId].address,
-			age: Number(ageRef.current?.value || personEntities[editedPersonId].age),
+			name: nameRef.current?.value || '',
+			registered: registeredRef.current?.value || '',
+			about: aboutRef.current?.value || '',
+			email: emailRef.current?.value || '',
+			address: addressRef.current?.value || '',
+			age: Number(ageRef.current?.value),
 			picture: personEntities[editedPersonId].picture,
 			isActive,
 		};
